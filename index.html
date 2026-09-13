@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataPulse B2B | Verified B2B Data & Data Intelligence</title>
+    <meta name="description" content="Custom B2B company and decision-maker data, data enrichment, verification and research for sales teams across global markets.">
+    <meta name="robots" content="index,follow">
+    <meta property="og:title" content="DataPulse B2B | Verified B2B Data & Data Intelligence">
+    <meta property="og:description" content="Custom company, decision-maker and enrichment data built around your ICP.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Cpath d='M18 19h28v8H18zM18 31h28v8H18zM18 43h19v4H18z' fill='white'/%3E%3C/svg%3E">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                            cyan: '#06b6d4',
+                            accent: '#6366f1'
+                        },
+                        dark: {
+                            bg: '#0b0f19',
+                            card: '#111827',
+                            border: '#1f2937',
+                            hover: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        .glow-text {
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        .gradient-border {
+            border: 1px solid transparent;
+            background-image: linear-gradient(#111827, #111827), linear-gradient(to right, #3b82f6, #06b6d4);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-200 antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-cyan flex items-center justify-center text-white shadow-lg glow-effect">
+                    <i data-lucide="database" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-white">Data<span class="text-brand-500">Pulse</span></span>
+                    <span class="block text-[10px] font-semibold text-brand-cyan tracking-widest uppercase -mt-1">B2B Solutions</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#services" class="hover:text-brand-500 transition-colors">Solutions</a>
+                <a href="#calculator" class="hover:text-brand-500 transition-colors">Cost Calculator</a>
+                <a href="#catalog" class="hover:text-brand-500 transition-colors">Sample Catalog</a>
+                <a href="#why-us" class="hover:text-brand-500 transition-colors">Why Choose Us</a>
+                <a href="#process" class="hover:text-brand-500 transition-colors">How We Verify</a>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <button onclick="openModal('5000')" class="px-5 py-2.5 text-sm font-semibold rounded-lg border border-brand-500/30 text-brand-500 hover:bg-brand-500/10 transition">
+                    Custom Request
+                </button>
+                <button onclick="openModal('Free Sample')" class="px-5 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-brand-cyan text-white shadow-lg hover:shadow-brand-500/25 transition glow-effect">
+                    Get Sample
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" aria-label="Open navigation menu" class="md:hidden text-gray-400 hover:text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-dark-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="block py-2 text-gray-300 hover:text-brand-500">Services</a>
+            <a href="#calculator" class="block py-2 text-gray-300 hover:text-brand-500">Cost Calculator</a>
+            <a href="#catalog" class="block py-2 text-gray-300 hover:text-brand-500">Database Catalog</a>
+            <a href="#why-us" class="block py-2 text-gray-300 hover:text-brand-500">Why Choose Us</a>
+            <button onclick="openModal('Free Sample')" class="w-full mt-2 px-5 py-2.5 text-sm font-semibold rounded-lg bg-brand-600 text-white text-center">
+                Get Sample
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+        <!-- Background Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-brand-cyan/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-500 text-xs sm:text-sm font-medium mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                <span>Global B2B Data Intelligence • Built around your ICP</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight max-w-5xl mx-auto">
+                Verified <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 via-brand-cyan to-indigo-400 glow-text">B2B Data & Intelligence</span> Built Around Your ICP
+            </h1>
+
+            <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto font-normal leading-relaxed">
+                Identify the right companies and decision-makers with custom B2B datasets, business emails, phone numbers, firmographics and enrichment tailored to your ICP.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openModal('Hero Quick Lead')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-brand-cyan text-white font-bold text-base shadow-xl hover:scale-105 transition transform glow-effect flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    Get a 25-Record Sample
+                </button>
+                <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-dark-card border border-dark-border hover:border-brand-500/50 text-gray-200 font-semibold text-base transition flex items-center justify-center gap-2">
+                    <i data-lucide="calculator" class="w-5 h-5 text-brand-cyan"></i>
+                    Estimate Your Cost
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO STATS BAR -->
+    <section class="border-t border-b border-dark-border py-8 bg-dark-card/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-around text-center gap-8">
+                <div class="text-center md:border-r border-dark-border/50">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-500">500+</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Market Coverage</div>
+                </div>
+                <div class="text-center md:border-r border-dark-border/50">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-cyan">ICP</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Targeted Research</div>
+                </div>
+                <div class="text-center border-r border-dark-border/50 last:border-0">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white">Flexible</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">Data Delivery</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-brand-500">CSV / XLSX</div>
+                    <div class="text-xs sm:text-sm text-gray-400 mt-1">CRM-Ready Formats</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-dark-bg relative border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest">Our Solutions</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white mt-2">B2B Data Built for Prospecting, Research & Enrichment</p>
+                <p class="text-gray-400 mt-4">Choose a ready-made dataset or let us build a custom list around your exact geography, industry, company profile and target roles.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition">
+                        <i data-lucide="users" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Custom B2B Prospecting Data</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Build company and decision-maker lists around your exact ICP, geography, industry and seniority requirements.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Business Email & Phone (where available)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Professional Profile URLs</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan flex items-center justify-center mb-6 group-hover:bg-brand-cyan group-hover:text-dark-bg transition">
+                        <i data-lucide="database" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Industry & Market Databases</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Industry and market-focused datasets across technology, logistics, manufacturing, healthcare, real estate, retail and more.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Company Firmographics</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Revenue & Employee Count Filter</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-6 group-hover:bg-indigo-500 group-hover:text-white transition">
+                        <i data-lucide="sparkles" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">CRM Data Enrichment & Cleansing</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Have existing database or CRM contacts? We clean out duplicates, update obsolete emails, and append missing fields.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Deduplication & Record Hygiene</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> CRM Format Ready (HubSpot/Salesforce)</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:text-white transition">
+                        <i data-lucide="shield-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Contact Verification</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Verification checks help identify invalid or risky contact records before delivery. Results depend on source and market.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Quality Checks & Replacement Policy</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Replace qualifying invalid records</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Technographic Intelligence</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Find companies based on the technologies they use (e.g., Shopify, AWS, Salesforce, React, SAP).</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Tech Stack Competitor Targeting</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Buyer & company signals where available</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition">
+                        <i data-lucide="terminal" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Custom Web & Directory Research</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Need data extracted from specific portals, directories, or marketplaces? We build tailored extraction pipelines.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Clean CSV / Excel / JSON Export</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Source-aware collection workflows</li>
+                    </ul>
+                </div>
+
+                <!-- Service 7: Web Design & Development -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center mb-6 group-hover:bg-pink-500 group-hover:text-white transition">
+                        <i data-lucide="palette" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Web Design & Development</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Custom-built, high-performance websites and web applications designed for B2B conversion and data management.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Responsive Landing Pages & Lead Generation Sites</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> CRM & Data Management Integration</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Full-Stack Web Applications & Portals</li>
+                    </ul>
+                </div>
+
+                <!-- Service 8: Digital Marketing & Ads -->
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500/40 transition group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition">
+                        <i data-lucide="trending-up" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Digital Marketing & Paid Ads</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">End-to-end digital marketing campaigns with expert management of Meta, Google Ads and other platforms to drive qualified leads.</p>
+                    <ul class="text-xs text-gray-300 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Meta (Facebook & Instagram) Ad Campaigns</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Google Ads (Search, Display, Shopping)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Campaign Optimization & ROI Tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COST CALCULATOR & ESTIMATOR -->
+    <section id="calculator" class="py-20 bg-dark-card/40 relative border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Info Column -->
+                <div class="lg:col-span-5">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-xs font-semibold mb-4">
+                        <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+                        <span>Instant Estimator</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        Calculate Your Data Requirement & Cost
+                    </h2>
+                    <p class="text-gray-400 mt-4 leading-relaxed">
+                        Customize your dataset target parameters below. Use the estimator for an indicative range. Final pricing depends on market, data availability, enrichment depth and verification requirements.
+                    </p>
+                    
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="p-1 rounded bg-brand-500/20 text-brand-500 mt-1"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Project-Based Delivery</h4>
+                                <p class="text-xs text-gray-400">Start with a defined dataset or research project; recurring plans are available for larger workflows.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="p-1 rounded bg-brand-500/20 text-brand-500 mt-1"><i data-lucide="check-circle" class="w-4 h-4"></i></div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Replacement Policy</h4>
+                                <p class="text-xs text-gray-400">Qualifying invalid records are replaced according to the agreed delivery terms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Form Card -->
+                <div class="lg:col-span-7 bg-dark-card border border-dark-border rounded-2xl p-6 sm:p-8 shadow-2xl relative glow-effect">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Target Industry -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Target Industry</label>
+                            <select id="calc-industry" onchange="calculatePrice()" class="w-full bg-dark-bg border border-dark-border text-white text-sm rounded-xl p-3 focus:outline-none focus:border-brand-500">
+                                <option value="IT & Software">IT & Software / SaaS</option>
+                                <option value="Healthcare & Pharma">Healthcare & Pharma</option>
+                                <option value="E-Commerce & Retail">E-Commerce & Retail</option>
+                                <option value="Real Estate & Const.">Real Estate & Construction</option>
+                                <option value="Financial Services">Finance & Banking</option>
+                                <option value="Manufacturing & B2B">Manufacturing & Logistics</option>
+                            </select>
+                        </div>
+
+                        <!-- Target Region -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Target Region</label>
+                            <select id="calc-region" onchange="calculatePrice()" class="w-full bg-dark-bg border border-dark-border text-white text-sm rounded-xl p-3 focus:outline-none focus:border-brand-500">
+                                <option value="United States (USA)">United States (USA)</option>
+                                <option value="India & South Asia">India & South Asia</option>
+                                <option value="United Kingdom & EU">United Kingdom & Europe</option>
+                                <option value="UAE & Middle East">UAE & Middle East</option>
+                                <option value="Global / Multi-Region">Global Multi-Region</option>
+                            </select>
+                        </div>
+
+                        <!-- Job Role / Level -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Target Seniority / Role</label>
+                            <select id="calc-role" onchange="calculatePrice()" class="w-full bg-dark-bg border border-dark-border text-white text-sm rounded-xl p-3 focus:outline-none focus:border-brand-500">
+                                <option value="C-Level (CEO, CTO, CFO, Founder)" data-multiplier="1.2">C-Level Executives (CEO, CTO, Founder, Managing Director)</option>
+                                <option value="VPs & Directors" data-multiplier="1.0">VPs, Department Heads & Directors</option>
+                                <option value="Mid-Managers & Tech Leads" data-multiplier="0.8">Managers & Team Leads</option>
+                                <option value="All Decision Makers" data-multiplier="1.1">Mixed Decision Makers Pack</option>
+                            </select>
+                        </div>
+
+                        <!-- Range Slider Quantity -->
+                        <div class="sm:col-span-2">
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Number of Contacts / Records</label>
+                                <span id="quantity-val" class="text-brand-cyan font-bold text-lg">5,000</span>
+                            </div>
+                            <input type="range" id="calc-qty" min="500" max="50000" step="500" value="5000" oninput="calculatePrice()" class="w-full h-2 bg-dark-bg rounded-lg appearance-none cursor-pointer accent-brand-500">
+                            <div class="flex justify-between text-[10px] text-gray-500 mt-1 font-mono">
+                                <span>500</span><span>50,000+</span>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Display -->
+                        <div class="sm:col-span-2 bg-dark-bg rounded-xl p-4 border border-brand-500/20">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Estimated Cost</p>
+                                    <p id="estimated-price" class="text-3xl font-extrabold text-brand-500 mt-1">$400</p>
+                                    <p id="per-lead-cost" class="text-xs text-gray-400 mt-1">($0.08 / lead)</p>
+                                </div>
+                                <button type="button" onclick="requestCalculatedQuote()" class="px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-cyan text-white text-sm font-bold rounded-lg hover:scale-105 transition transform">
+                                    Request Quote
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAMPLE REQUEST MODAL -->
+    <div id="sample-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 p-4">
+        <div class="bg-dark-card border border-dark-border rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="sticky top-0 bg-dark-card border-b border-dark-border px-6 py-4 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-white">Request a Sample</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white transition">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Modal Form Content -->
+            <div id="modal-form-content" class="p-6 space-y-4">
+                <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Your Name</label>
+                        <input type="text" required placeholder="John Doe" class="w-full bg-dark-bg border border-dark-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Email Address</label>
+                        <input type="email" required placeholder="john@company.com" class="w-full bg-dark-bg border border-dark-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Company Name</label>
+                        <input type="text" required placeholder="Your Company" class="w-full bg-dark-bg border border-dark-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">What are you looking for?</label>
+                        <input type="text" id="modal-industry-field" required placeholder="E.g., B2B leads, data sample" class="w-full bg-dark-bg border border-dark-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Company Size</label>
+                        <select class="w-full bg-dark-bg border border-dark-border rounded-xl p-3 text-sm text-white focus:outline-none focus:border-brand-500">
+                            <option>Any company size</option>
+                            <option>1-10</option><option>11-50</option><option>51-200</option><option>201-500</option><option>501-1000</option><option>1000+</option>
+                        </select>
+                    </div>
+
+                    <label class="flex items-start gap-3 text-xs text-gray-400">
+                        <input type="checkbox" required class="mt-0.5 accent-brand-500">
+                        <span>I agree to the processing of my information to respond to this request and understand that I can request correction or removal.</span>
+                    </label>
+
+                    <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-brand-600 to-brand-cyan hover:from-brand-500 hover:to-brand-cyan text-white font-bold text-sm rounded-xl shadow-lg transition glow-effect mt-2">
+                        Request My Sample
+                    </button>
+                </form>
+            </div>
+
+            <!-- Success State Screen (Hidden initially) -->
+            <div id="modal-success-content" class="hidden text-center py-8 space-y-4 px-6">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
+                    <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Request Prepared</h3>
+                <p class="text-sm text-gray-300 max-w-sm mx-auto">
+                    Your request has been validated in this demo. Connect the form to your CRM/email endpoint before production so submissions are actually stored and routed.
+                </p>
+                <button onclick="closeModal()" class="px-6 py-2.5 bg-dark-bg border border-dark-border text-white text-xs font-semibold rounded-lg hover:border-brand-500 transition mt-4">
+                    Close Window
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dynamic Cost Calculator Function
+        function calculatePrice() {
+            const qty = parseInt(document.getElementById('calc-qty').value);
+            const roleSelect = document.getElementById('calc-role');
+            const roleMultiplier = parseFloat(roleSelect.options[roleSelect.selectedIndex].getAttribute('data-multiplier') || 1.0);
+            
+            // Display Quantity Value
+            document.getElementById('quantity-val').innerText = qty.toLocaleString() + " Contacts";
+
+            // Base rate per record logic (Tiered pricing)
+            let baseRate = 0.08;
+            if (qty >= 25000) baseRate = 0.035;
+            else if (qty >= 10000) baseRate = 0.045;
+            else if (qty >= 5000) baseRate = 0.055;
+            else if (qty >= 2000) baseRate = 0.065;
+
+            // Calculate total price with role multiplier
+            let finalPrice = Math.round(qty * baseRate * roleMultiplier);
+
+            // Minimum pricing safeguard
+            if (finalPrice < 49) finalPrice = 49;
+
+            const perLeadCost = (finalPrice / qty).toFixed(3);
+
+            document.getElementById('estimated-price').innerText = '$' + finalPrice.toLocaleString();
+            document.getElementById('per-lead-cost').innerText = `($${perLeadCost} / lead)`;
+        }
+
+        // Trigger modal with prefilled details from calculator
+        function requestCalculatedQuote() {
+            const industry = document.getElementById('calc-industry').value;
+            const qty = document.getElementById('calc-qty').value;
+            const price = document.getElementById('estimated-price').innerText;
+
+            document.getElementById('modal-industry-field').value = `${industry} (${qty} contacts - Est. ${price})`;
+            openModal('Calculator Request');
+        }
+
+        // Modal Controls
+        function openModal(presetTopic = '') {
+            const modal = document.getElementById('sample-modal');
+            const formContent = document.getElementById('modal-form-content');
+            const successContent = document.getElementById('modal-success-content');
+
+            if (presetTopic && presetTopic !== 'Calculator Request') {
+                document.getElementById('modal-industry-field').value = presetTopic;
+            }
+
+            formContent.classList.remove('hidden');
+            successContent.classList.add('hidden');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('sample-modal').classList.add('hidden');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const inputs = form.querySelectorAll('input, textarea, select');
+            const values = [];
+            inputs.forEach((el) => {
+                if (el.type === 'checkbox') {
+                    if (el.checked) values.push('Consent: Yes');
+                } else if (el.value) {
+                    values.push(`${el.previousElementSibling?.innerText || el.name || 'Field'}: ${el.value}`);
+                }
+            });
+
+            // Front-end-safe fallback. Replace this with your CRM/API endpoint before production.
+            const subject = encodeURIComponent('B2B data sample request');
+            const body = encodeURIComponent(values.join('\n'));
+            const email = 'support@datapulseb2b.com';
+            const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
+            window.location.href = mailto;
+
+            const formContent = document.getElementById('modal-form-content');
+            const successContent = document.getElementById('modal-success-content');
+            formContent.classList.add('hidden');
+            successContent.classList.remove('hidden');
+        }
+
+        // Initial Calculation Run
+        calculatePrice();
+    </script>
+</body>
+</html>
